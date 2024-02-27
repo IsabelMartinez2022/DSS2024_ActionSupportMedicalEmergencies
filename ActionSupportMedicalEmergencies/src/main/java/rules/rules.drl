@@ -1,0 +1,179 @@
+/*"1) If person (no conscious and no breathing and no bleeding and no electric shock and no major trauma and no car accident) then Call 112+CPR+AED	"						
+2) If person (no conscious and no breathing and no bleeding and electric shock) then Turn off the power source+ Don't cover burnts+ Call 112+CPR+AED						
+3) If person (no conscious and no breathing and no bleeding and no electric shock and major trauma and no car accident) then Call 112+Don't move person+CPR+AED						
+4)If person (no conscious and no  breathing and bleeding and major trauma and no car accident) then Call 112+ Pressure+Don't move person+CPR+AED						
+5)If person (no conscious and breathing and no bleeding and major trauma and car accident) then P (Proteger)+ A (Avisar: Call 112) +S (Socorrer: Don't move person or remove helmet, protect from cold or heat, don't give food or drinks)						
+6)If person (no conscious and no breathing and no bleeding and no electric shock and  major trauma and car accident) then P (Proteger)+ A (Avisar: Call 112) +S (Socorrer: Don't move person or remove helmet...+CPR+AED)						
+"7)If person(no conscious and no breathing and bleeding and major trauma and car accident ) then P (Proteger)+ A (Avisar: Call 112) +S (Socorrer: Pressure+Don't move person or remove helmet...+CPR+AED)	"						
+8)If person (conscious and no dizzy and emit words and trying to cough and difficulty breathing) then Encourage to cough						
+9)If person (conscious and no dizzy and no emit words and difficulty breathing) then Heimlich M.						
+10)If person (chest pain) then Call 112+Look for medication						
+11) If person (no conscious and breathing and no bleeding and no major trauma and no vomit) then Secure area+ Legs up, loosen tight clothing+Call 112 if not recovered						
+"12) If person (no conscious and breathing and no bleeding and no major trauma and vomit) then Secure area+ Recovery position+Call 112	if not recovered"						
+13)If person ( conscious and dizzy and no bleeding) then Lay down, legs up+ Loosen tight clothing+ Hydration						
+14) If person (conscious and dizzy and  bleeding) then Pressure to wound						
+"15) If person (no conscious and no breathing and no bleeding and seizure) then Secure area+Cushion head...+Recovery position+Call 112	if not recovered"						
+16) If person (conscious and no dizzy and emit words and no trying to cough and  Suspicion of intoxication/ poisoning and difficulty breathing ) then Call 915 620420+Recovery position, fresh air						
+17) If person (conscious and no dizzy and emit words and no trying to cough and no Suspicion of intoxication/ poisoning and no vomit and difficulty breathing ) then Call 915 620420+ Epinephrine+ Lay down						
+18) If person (conscious and no dizzy and emit words and no trying to cough and no Suspicion of intoxication/ poisoning and vomit and difficulty breathing ) then Call 915 620420+ Epinephrine+ Recovery position						
+19)If person (conscious and trying to cough and difficulty breathing) then Inhaler+ Keep calm						
+20)If person( conscious and difficulty breathing) then Call 112+loosen tight clothes						
+21)If person (conscious and dizzy and breathing and no emit words ) then Call 112						
+22) If person (conscious and no dizzy and emit words and difficulty breathing) then Deep breathing + distraction + psycological first aids*/
+
+import objects.Person						
+
+rule "Emergency Response 1"
+    dialect "java"
+    when
+        p1 : Person(conscious == false,
+                    breathing == false,
+                    bleeding == false,
+                    electric_shock == false,
+                    major_trauma == true,
+                    car_accident == false)
+    then
+        p1.setProtocol("Call 112, start CPR and AED");
+end
+
+rule "Emergency Response 2"
+dialect "java"
+when
+    p2 : Person(conscious == false,
+                                  breathing == false,
+                                  bleeding == false,
+                                  electric_shock == true)                                    
+then
+    p2.setProtocol("Turn off power source, do not cover the burnts, call 112, start CPR, use AED");
+end
+
+rule "Emergency Response 3"
+dialect "java"
+when
+    p3 : Person(conscious == false,
+                                  breathing == false,
+                                  bleeding == false,
+                                  electric_shock == true,
+                                  major_trauma == true,
+                                  car_accident == false)
+then
+    p3.setProtocol("Call 112, do not move the person, start CPR, use AED");
+end
+
+rule "Emergency Response 4"
+dialect "java"
+when
+    p4 : Person(conscious == false,
+                                  breathing == false,
+                                  bleeding == true,
+                                  major_trauma == true,
+                                  car_accident == false)
+then
+    p4.setProtocol("Call 112, apply pressure to stop bleeding, do not move the person, start CPR, use AED");
+end
+
+rule "Emergency Response 5"
+dialect "java"
+when
+    p5 : Person(conscious == false,
+                                  breathing == true,
+                                  bleeding == false,
+                                  major_trauma == true,
+                                  car_accident == true)
+then
+    p5.setProtocol("Protect the person, call 112, do not move the person or remove the helmet, protect from cold or heat and do not give food or drinks");
+end
+
+rule "Emergency Response 6"
+dialect "java"
+when
+    p6 : Person(conscious == false,
+                                  breathing == true,
+                                  bleeding == false,
+                                  major_trauma == true,
+                                  car_accident == true)
+then
+    p6.setProtocol("Protect the person, call 112, do not move the person or remove the helmet, protect from cold or heat and do not give food or drinks");
+end
+
+rule "Emergency Response 7"
+dialect "java"
+when
+    p7 : Person(conscious == false,
+                                  breathing == false,
+                                  bleeding == false,
+                                  electric_shock == false,
+                                  major_trauma == true,
+                                  car_accident == true)
+then
+    p7.setProtocol("Protect the person, call 112, do not move the person or remove the helmet, protect from cold or heat and do not give food or drinks, start CPR, use AED");
+end
+
+rule "Emergency Response 8"
+dialect "java"
+when
+    p8 : Person(conscious == false,
+                                  breathing == false,
+                                  bleeding == true,
+                                  major_trauma == true,
+                                  car_accident == true)
+then
+    p8.setProtocol("Protect the person, call 112, do not move the person or remove the helmet, protect from cold or heat and do not give food or drinks, start CPR and use AED");
+end
+
+rule "Emergency Response 9"
+dialect "java"
+when
+    p9 : Person(conscious == true,
+                                  dizzy == false,
+                                  emit_words == true,
+                                  trying_to_cough == true,
+                                  difficulty_breathing == true)
+then
+    p9.setProtocol("Encourage the person to cough");
+end
+
+rule "Emergency Response 10"
+dialect "java"
+when
+    p10 : Person(conscious == true,
+                                  dizzy == false,
+                                  emit_words == false,
+                                  difficulty_breathing == true)
+then
+    p10.setProtocol("Do the Heimlich maneuver");
+end
+
+rule "Emergency Response 11"
+dialect "java"
+when
+    p11 : Person(chest_pain == true)
+
+then
+    p11.setProtocol("Call 112, look for medication");
+end
+
+rule "Emergency Response 12"
+dialect "java"
+when
+    p12 : Person(conscious == false,
+                                  breathing == true,
+                                  bleeding == false,
+                                  mayor_traume == false,
+                                  vomit == false)
+
+then
+    p12.setProtocol("Secure the are, put legs up, loosen tight clothing, call 112 if the person is not recovered after the previous stage");
+end
+
+rule "Emergency Response 13"
+dialect "java"
+when
+    p13 : Person(conscious == false,
+                                  breathing == true,
+                                  bleeding == false,
+                                  mayor_traume == false,
+                                  vomit == true)
+then
+    p13.setProtocol("Secure the area, put the person in recovery position, call 112 if the person is not recovered after the previous stage");
+end
