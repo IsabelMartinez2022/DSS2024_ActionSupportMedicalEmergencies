@@ -1,8 +1,8 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit4TestClass.java to edit this template
  */
-
+package medicalEmergencies;
 
 import static junit.framework.Assert.assertEquals;
 import org.junit.Test;
@@ -10,88 +10,85 @@ import pojos.Person;
 import org.kie.api.KieServices;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
-/**
- *
- * @author maria
- */
+
 public class MainTest {
     
     @Test
     public void testEmergencyResponse1() {
-        Person person = new Person(false, false, false, false, false, false, false, false, false, false, false, false, false, false);
-        executeRulesAndAssertProtocol(person, "Call 112, start CPR and AED");
+        Person p1 = new Person(false, false, false, false, false, false, false, false, false, false, false, false, false, false, false);
+        executeRulesAndAssertProtocol(p1, "Call 112, start CPR and AED");
     }
 
     @Test
     public void testEmergencyResponse2() {
-        Person person = new Person(false, false, false, false, false, false, false, false, false, true, false, false, false, false);
-        executeRulesAndAssertProtocol(person, "Turn off power source, do not cover the burnts, call 112, start CPR, use AED");
+        Person p2 = new Person(false, false, false, false, false, false, false, false, false, false, false, false, false, false, true);
+        executeRulesAndAssertProtocol(p2, "Turn off power source, do not cover the burnts, call 112, start CPR, use AED");
     }
 
     @Test
     public void testEmergencyResponse3() {
-        Person person = new Person(false, false, false, false, false, false, false, false, false, false, true, false, false, false);
-        executeRulesAndAssertProtocol(person, "Call 112, do not move the person, start CPR, use AED");
+        Person p3 = new Person(false, false, false, false, false, false, false, false, false, false, true, false, false, false, false);
+        executeRulesAndAssertProtocol(p3, "Call 112, do not move the person, start CPR, use AED");
     }
 
     @Test
     public void testEmergencyResponse4() {
-        Person person = new Person(false, false, true, false, false, false, false, false, false, false, true, false, false, false);
-        executeRulesAndAssertProtocol(person, "Call 112, apply pressure to stop bleeding, do not move the person, start CPR, use AED");
+        Person p4 = new Person(false, false, false, false, false, false, false, false, false, false, true, true, false, false, false);
+        executeRulesAndAssertProtocol(p4, "Call 112, apply pressure to stop bleeding, do not move the person, start CPR, use AED");
     }
 
     @Test
     public void testEmergencyResponse5() {
-        Person person = new Person(true, false, true, false, false, false, false, false, false, false, true, true, false, false);
-        executeRulesAndAssertProtocol(person, "Protect the person, call 112, do not move the person or remove the helmet, protect from cold or heat and do not give food or drinks");
+        Person p5 = new Person(false, false, false, false, false, false, false, false, false, true, false, false, false, false, false);
+        executeRulesAndAssertProtocol(p5, "Protect the person, call 112, do not move the person or remove the helmet, protect from cold or heat and do not give food or drinks");
     }
 
     @Test
     public void testEmergencyResponse6() {
-        Person person = new Person(true, false, false, false, false, false, false, false, false, false, true, true, false, false);
-        executeRulesAndAssertProtocol(person, "Protect the person, call 112, do not move the person or remove the helmet, protect from cold or heat and do not give food or drinks");
+        Person p6 = new Person(false, false, false, true, false, false, false, false, false, false, false, false, false, false, false);
+        executeRulesAndAssertProtocol(p6, "Protect the person, call 112, do not move the person or remove the helmet, protect from cold or heat and do not give food or drinks");
     }
 
     @Test
     public void testEmergencyResponse7() {
-        Person person = new Person(true, false, false, true, false, false, false, false, false, false, true, true, false, false);
-        executeRulesAndAssertProtocol(person, "Protect the person, call 112, do not move the person or remove the helmet, protect from cold or heat and do not give food or drinks, start CPR, use AED");
+        Person p7 = new Person(false, false, false, true, false, false, false, false, false, false, true, false, false, false, false);
+        executeRulesAndAssertProtocol(p7, "Protect the person, call 112, do not move the person or remove the helmet, protect from cold or heat and do not give food or drinks, start CPR, use AED");
     }
 
     @Test
     public void testEmergencyResponse8() {
-        Person person = new Person(true, true, false, false, true, false, true, false, false, false, false, false, false, true);
-        executeRulesAndAssertProtocol(person, "Protect the person, call 112, do not move the person or remove the helmet, protect from cold or heat and do not give food or drinks, start CPR and use AED");
+        Person p8 = new Person(false, false, false, true, false, false, false, false, false, false, true, true, false, false, false);
+        executeRulesAndAssertProtocol(p8, "Protect the person, call 112, do not move the person or remove the helmet, protect from cold or heat and do not give food or drinks, start CPR and use AED");
     }
     
     @Test
     public void testEmergencyResponse9() {
-        Person person = new Person(true, false, false, true, true, false, false, false, false, false, false, false, false, false);
-        executeRulesAndAssertProtocol(person, "Encourage the person to cough");
+        Person p9 = new Person(false, false, true, false, false, false, false, false, false, false, false, false, false, false, false);
+        executeRulesAndAssertProtocol(p9, "Encourage the person to cough");
     }
     
     @Test
     public void testEmergencyResponse10() {
-        Person person = new Person(true, false, false, false, true, false, false, false, false, false, false, false, false, false);
-        executeRulesAndAssertProtocol(person, "Do the Heimlich maneuver");
+        Person p10 = new Person(false, false, true, false, false, false, false, false, false, false, false, false, true, false, false);
+        executeRulesAndAssertProtocol(p10, "Do the Heimlich maneuver");
     }
 
     @Test
     public void testEmergencyResponse11() {
-        Person person = new Person(false, false, false, false, false, true, false, false, false, false, false, false, false, false);
-        executeRulesAndAssertProtocol(person, "Call 112, look for medication");
+        Person p11 = new Person(false, false, true, false, false, false, false, false, false, false, true, false, false, false, false);
+        executeRulesAndAssertProtocol(p11, "Call 112, look for medication");
     }
 
     @Test
     public void testEmergencyResponse12() {
-        Person person = new Person(false, false, true, false, false, false, false, false, false, true, false, true, false, false);
-        executeRulesAndAssertProtocol(person, "Secure the area, put legs up, loosen tight clothing, call 112 if the person is not recovered after the previous stage");
+        Person p12 = new Person(false, false, true, false, false, false, false, false, false, false, true, true, false, false, false);
+        executeRulesAndAssertProtocol(p12, "Secure the area, put legs up, loosen tight clothing, call 112 if the person is not recovered after the previous stage");
     }
 
     @Test
     public void testEmergencyResponse13() {
-        Person person = new Person(false, false, true, false, false, false, false, false, false, true, false, true, true, false);
-        executeRulesAndAssertProtocol(person, "Secure the area, put the person in recovery position, call 112 if the person is not recovered after the previous stage");
+        Person p13 = new Person(false, false, true, true, false, false, false, false, false, false, false, false, false, false, false);
+        executeRulesAndAssertProtocol(p13, "Secure the area, put the person in recovery position, call 112 if the person is not recovered after the previous stage");
     }
 
     /**
@@ -105,18 +102,20 @@ public class MainTest {
     * @param person          Instancia de la clase Person con síntomas específicos.
     * @param expectedProtocol Protocolo esperado que se compara con el protocolo resultante.
     */
-    private void executeRulesAndAssertProtocol(Person person, String expectedProtocol) {
+    private static void executeRulesAndAssertProtocol(Person person, String expectedProtocol) {
+
         KieServices ks = KieServices.Factory.get();
         KieContainer kc = ks.getKieClasspathContainer();
+        
         KieSession ksession = kc.newKieSession("rulesSession");
-
+ 
         ksession.insert(person);
         ksession.fireAllRules();
         System.out.println(person);
         assertEquals(expectedProtocol, person.getProtocol());
         ksession.dispose();
     }
-
+    
     //con métodos booleanos
     /*@Test
     public void testEmergencyResponse1Rule() {

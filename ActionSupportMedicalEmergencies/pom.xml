@@ -9,7 +9,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>3.8.2</version>
+            <version>4.13.1</version>
             <type>jar</type>
         </dependency>
         <dependency>
@@ -22,6 +22,11 @@
             <artifactId>drools-core</artifactId>
             <version>8.44.0.Final</version> 
         </dependency>
+            <dependency>
+        <groupId>org.drools</groupId>
+        <artifactId>drools-compiler</artifactId>
+        <version>8.44.0.Final</version> <!-- Versión específica de Drools -->
+    </dependency>
     </dependencies>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -29,4 +34,23 @@
         <maven.compiler.target>18</maven.compiler.target>
         <exec.mainClass>com.mycompany.actionsupportmedicalemergencies.ActionSupportMedicalEmergencies</exec.mainClass>
     </properties>
+    <build>
+        <plugins>
+            <plugin>
+                <!-- Build an executable JAR -->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.2.2</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <classpathPrefix>lib/</classpathPrefix>
+                            <mainClass>medicalEmergencies.ActionSupportMedicalEmergencies</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

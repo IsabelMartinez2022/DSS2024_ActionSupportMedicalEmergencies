@@ -4,10 +4,6 @@
  */
 package pojos;
 
-/**
- *
- * @author maria
- */
 public class Person {
     private boolean conscious;
     private boolean dizzy;
@@ -27,7 +23,7 @@ public class Person {
     private String protocol;// LIST?
    
     
-    public Person(boolean conscious, boolean dizzy, boolean breathing, boolean bleeding, boolean emit_words, boolean chest_pain, boolean cough, boolean seizure, boolean possible_poisoning, boolean electric_shock, boolean major_trauma, boolean car_accident, boolean vomit, boolean difficulty_breathing) {
+    public Person(boolean conscious, boolean dizzy, boolean breathing, boolean bleeding, boolean emit_words, boolean chest_pain, boolean cough, boolean seizure, boolean possible_poisoning, boolean electric_shock, boolean major_trauma, boolean car_accident, boolean vomit, boolean difficulty_breathing, boolean  seizures) {
         this.conscious = conscious;
         this.dizzy = dizzy;
         this.breathing = breathing;
