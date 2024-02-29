@@ -11,9 +11,7 @@ rule "Emergency Response 1"
                     major_trauma == true,
                     car_accident == false)
     then
-        modify($person) {
-        setProtocol("Call 112, start CPR and AED")
-        };
+        $person.setProtocol("Call 112, start CPR and AED");
 end
 
 rule "Emergency Response 2"
