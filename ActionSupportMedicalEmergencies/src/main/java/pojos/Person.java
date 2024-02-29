@@ -5,25 +5,25 @@
 package pojos;
 
 public class Person {
-    private boolean conscious;
-    private boolean dizzy;
-    private boolean breathing;
-    private boolean bleeding;
-    private boolean emit_words; 
-    private boolean chest_pain; 
-    private boolean cough;
-    private boolean seizure;
-    private boolean possible_poisoning;
-    private boolean electric_shock; 
-    private boolean major_trauma;
-    private boolean car_accident;
-    private boolean vomit;
-    private boolean difficulty_breathing;
-    private boolean seizures;
+    private boolean conscious; // boolean
+    private boolean dizzy; // enum
+    private boolean breathing; // boolean
+    private boolean bleeding; // boolean
+    private boolean emit_words; // enum
+    private boolean chest_pain; // enum
+    private boolean cough; // boolean
+    private boolean seizure; // enum
+    private boolean possible_poisoning; // boolean
+    private boolean electric_shock; // boolean
+    private boolean major_trauma; // boolean
+    private boolean car_accident; // boolean
+    private boolean vomit; // boolean
+    private boolean difficulty_breathing; // enum
     private String protocol;// LIST?
-   
+   //tenemos que preguntarle todo -> a partir de ahí ejecuta las reglas y el ES elige
+   //unknown -> enum que comprendan el si o el no
     
-    public Person(boolean conscious, boolean dizzy, boolean breathing, boolean bleeding, boolean emit_words, boolean chest_pain, boolean cough, boolean seizure, boolean possible_poisoning, boolean electric_shock, boolean major_trauma, boolean car_accident, boolean vomit, boolean difficulty_breathing, boolean  seizures) {
+    public Person(boolean conscious, boolean dizzy, boolean breathing, boolean bleeding, boolean emit_words, boolean chest_pain, boolean cough, boolean seizure, boolean possible_poisoning, boolean electric_shock, boolean major_trauma, boolean car_accident, boolean vomit, boolean difficulty_breathing) {
         this.conscious = conscious;
         this.dizzy = dizzy;
         this.breathing = breathing;
@@ -38,7 +38,6 @@ public class Person {
         this.car_accident = car_accident;
         this.vomit = vomit;
         this.difficulty_breathing = difficulty_breathing;
-        this.seizures = seizures;
     }
 
     public boolean isConscious() {
